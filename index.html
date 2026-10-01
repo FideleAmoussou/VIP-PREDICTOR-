@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>خوارزمية أحمد — إشارات VIP (DZD)</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  :root{
+    --bg:#071018;
+    --card:#0f1720;
+    --muted:#9aa4b2;
+    --accent1:#ff7a00;
+    --accent2:#0cb86a;
+    --blue:#1b57f2;
+  }
+  html,body{height:100%}
+  body{
+    margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    background:
+      radial-gradient(900px 400px at 10% -10%, rgba(27,87,242,.06), transparent),
+      radial-gradient(900px 400px at 110% 10%, rgba(12,184,106,.04), transparent),
+      var(--bg);
+    color:#e6eef8; display:flex; align-items:center; justify-content:center; padding:28px;
+  }
+  .wrap{ width:min(680px, 96%); }
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    border:1px solid rgba(255,255,255,.04);
+    border-radius:18px; padding:26px; box-shadow:0 18px 50px rgba(0,0,0,.6);
+  }
+  .flags-container { display:flex; justify-content:center; gap:24px; margin-bottom:16px; }
+  .flag-item { display:flex; flex-direction:column; align-items:center; }
+  .flag-img { width:48px; border-radius:4px; margin-bottom:4px; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+  .flag-label { font-size:11px; color:var(--muted); font-weight:700; letter-spacing:0.5px; text-transform:uppercase; }
+  
+  h1{ text-align:center; font-weight:800; font-size:22px; margin:6px 0 2px }
+  .subtitle{ text-align:center; color:var(--muted); font-size:13px; margin-bottom:12px }
+  .badges{display:flex;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+  .badge{font-size:12px;color:#dfe9ff;background:#0b1620;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.03)}
+  .games{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+  .game{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#0b1620;border:1px solid rgba(255,255,255,.03);cursor:pointer}
+  .game input{accent-color:var(--accent2)}
+  label.small{font-size:13px;color:var(--muted);display:block;margin-bottom:6px; font-weight: 600;}
+  .input{width:100%;background:#071522;border:1px solid rgba(255,255,255,.04);padding:12px 14px;border-radius:10px;color:#eaf6ff;font-family:ui-monospace,monospace; text-align: right;}
+  .note{font-size:12px;color:var(--muted);margin-top:8px; line-height: 1.5;}
+  .hbar{height:12px;border-radius:999px; background:linear-gradient(90deg,var(--accent2),var(--accent1)); margin:12px 0; box-shadow:0 6px 18px rgba(12,184,106,.06) inset}
+  .btn-start{width:100%;padding:14px;border-radius:12px;border:0;font-weight:800;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071018;cursor:pointer;transition:transform 0.1s;}
+  .btn-start:active{transform:scale(0.98);}
+  .btn-deposit{width:100%;margin-top:12px;padding:12px;border-radius:12px;border:0;background:linear-gradient(90deg,#06b6d4,#2b9bff);color:white;cursor:pointer;transition:transform 0.1s; font-weight: 600;}
+  .btn-deposit:active{transform:scale(0.98);}
+  .meta{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:13px}
+  .footer{ text-align:center; color:#9aa4b2; font-size:12px; margin-top:12px }
+  .countdown{font-weight:800;color:#fff; background:rgba(255,255,255,.03); padding:6px 10px;border-radius:8px; direction: ltr; display: inline-block;}
+  .disabled{opacity:.5;pointer-events:none}
+  @media (max-width:520px){ .games{grid-template-columns:1fr} h1{font-size:20px} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      
+      <!-- Блок с флагом -->
+      <div class="flags-container">
+        <div class="flag-item">
+          <img class="flag-img" src="https://flagcdn.com/w80/dz.png" alt="علم الجزائر" />
+          <span class="flag-label">الجزائر</span>
+        </div>
+      </div>
+      
+      <h1>خوارزمية أحمد</h1>
+      <div class="subtitle">إشارات VIP 99.8% • حصري لـ BetAndYou • DZD</div>
+
+      <div class="badges">
+        <div class="badge">🔒 آمن</div>
+        <div class="badge">✅ موثق</div>
+        <div class="badge">🇩🇿 VIP الجزائر</div>
+      </div>
+
+      <div style="margin-bottom:8px;font-weight:700;color:#dbeeff">🎮 اختر لعبتك</div>
+      <div class="games" id="games">
+        <label class="game"><input type="radio" name="game" value="Crash" checked><span>💥 كراش</span></label>
+        <label class="game"><input type="radio" name="game" value="Aviator"><span>✈️ أفياتور</span></label>
+        <label class="game"><input type="radio" name="game" value="Mines"><span>💎 ماينز</span></label>
+        <label class="game"><input type="radio" name="game" value="Chicken Road"><span>🐔 تشيكن رود</span></label>
+        <label class="game" style="grid-column:span 2"><input type="radio" name="game" value="Penalty"><span>⚽ بيلانتي</span></label>
+    </div>
+
+    <label class="small">معرف حساب BetAndYou</label>
+    <input id="accId" class="input" placeholder="أدخل المعرف (مثال: 1821234567)" inputmode="numeric" maxlength="10" />
+
+    <div class="note">10 أرقام (يبدأ بـ 182) • العملة: <strong>DZD</strong> • الرمز الترويجي: <strong style="color:var(--accent1)">RABAH786</strong></div>
+
+    <div class="hbar" aria-hidden="true"></div>
+
+    <button id="startBtn" class="btn-start">ابدأ</button>
+
+      <div style="height:10px"></div>
+
+      <button id="depositBtn" class="btn-deposit">💳 إنشاء حساب وإيداع</button>
+
+      <div class="meta" style="margin-top:12px">
+        <div><span style="display:inline-block;width:8px;height:8px;background:#16a34a;border-radius:50%;margin-left:8px;"></span>متصل: <span id="onlineCount">140</span></div>
+        <div>يُغلق الوصول خلال <span id="countdown" class="countdown">04:00</span></div>
+      </div>
+
+      <div class="footer">خوارزمية أحمد الخاصة 2024</div>
+    </div>
+  </div>
+
+  <div id="modalOverlay" class="fixed inset-0 flex items-center justify-center z-50 hidden" style="background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);">
+    <div class="card" style="width: min(400px, 90%); text-align: center; padding: 24px;">
+      <div id="modalText" style="margin-bottom: 20px; white-space: pre-wrap; line-height: 1.6; font-size: 15px; color: #e6eef8;"></div>
+      <button id="modalCloseBtn" class="btn-start" style="padding: 12px;">مفهوم (موافق)</button>
+    </div>
+  </div>
+
+<script>
+  let total = 4 * 60; // 4 minutes
+  const cdEl = document.getElementById('countdown');
+  const startBtn = document.getElementById('startBtn');
+  const depositBtn = document.getElementById('depositBtn');
+  const accId = document.getElementById('accId');
+
+  function fmt(s){
+    const m = Math.floor(s/60).toString().padStart(2,'0');
+    const sec = (s%60).toString().padStart(2,'0');
+    return `${m}:${sec}`;
+  }
+  cdEl.textContent = fmt(total);
+
+  const timer = setInterval(()=>{
+    total--;
+    if(total < 0){
+      clearInterval(timer);
+      cdEl.textContent = "00:00";
+      startBtn.classList.add('disabled');
+      depositBtn.classList.add('disabled');
+      startBtn.textContent = "تم إغلاق الوصول";
+      return;
+    }
+    cdEl.textContent = fmt(total);
+  }, 1000);
+
+  function validId(v){
+    return /^182\d{7}$/.test(v);
+  }
+
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalText = document.getElementById('modalText');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+  function showMessage(text) {
+    modalText.textContent = text;
+    modalOverlay.classList.remove('hidden');
+  }
+
+  modalCloseBtn.addEventListener('click', () => {
+    modalOverlay.classList.add('hidden');
+  });
+
+  startBtn.addEventListener('click', ()=>{
+    const v = accId.value.trim();
+    if(!validId(v)){
+      showMessage('⚠️ يرجى إدخال معرف حساب صحيح مكون من 10 أرقام ويبدأ بـ 182.');
+      accId.focus();
+      return;
+    }
+    const game = document.querySelector('input[name="game"]:checked').nextElementSibling.textContent.trim();
+    showMessage(`✅ تم قبول حساب BetAndYou!\n\n🎮 اللعبة: ${game}\n🆔 المعرف: ${v}\n\n⚠️ لتفعيل الخوارزمية واستلام إشارات VIP، يجب عليك القيام بإيداع أول بحد أدنى 1000 د.ج باستخدام الرمز الترويجي RABAH786.`);
+  });
+
+  depositBtn.addEventListener('click', ()=>{
+    const link = 'https://reffpa.com/L?tag=d_5507923m_1264c_&site=5507923&ad=1264&r=registration'; 
+    window.open(link, '_blank');
+  });
+
+  setInterval(()=>{
+    const el = document.getElementById('onlineCount');
+    const cur = parseInt(el.textContent,10) || 80;
+    const delta = Math.floor(Math.random()*3)-1; 
+    el.textContent = Math.max(20, cur + delta);
+  }, 2200);
+</script>
+</body>
+</html>
