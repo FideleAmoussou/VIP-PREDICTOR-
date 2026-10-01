@@ -43,8 +43,7 @@
   .game input{accent-color:var(--accent2)}
   label.small{font-size:13px;color:var(--muted);display:block;margin-bottom:6px; font-weight: 600;}
   .input{width:100%;background:#071522;border:1px solid rgba(255,255,255,.04);padding:12px 14px;border-radius:10px;color:#eaf6ff;font-family:ui-monospace,monospace; text-align: right;}
-  .note{font-size:12px;color:var(--muted);margin-top:8px; line-height: 1.5;}
-  .hbar{height:12px;border-radius:999px; background:linear-gradient(90deg,var(--accent2),var(--accent1)); margin:12px 0; box-shadow:0 6px 18px rgba(12,184,106,.06) inset}
+  .note{font-size:12px;color:var(--muted);margin-top:8px; margin-bottom: 16px; line-height: 1.5;}
   .btn-start{width:100%;padding:14px;border-radius:12px;border:0;font-weight:800;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071018;cursor:pointer;transition:transform 0.1s;}
   .btn-start:active{transform:scale(0.98);}
   .btn-deposit{width:100%;margin-top:12px;padding:12px;border-radius:12px;border:0;background:linear-gradient(90deg,#06b6d4,#2b9bff);color:white;cursor:pointer;transition:transform 0.1s; font-weight: 600;}
@@ -69,7 +68,7 @@
       </div>
       
       <h1>خوارزمية أحمد</h1>
-      <div class="subtitle">إشارات VIP 99.8% • حصري لـ BetAndYou • DZD</div>
+      <div class="subtitle">إشارات VIP 99.8% • حصري لـ 1xBet • DZD</div>
 
       <div class="badges">
         <div class="badge">🔒 آمن</div>
@@ -86,12 +85,10 @@
         <label class="game" style="grid-column:span 2"><input type="radio" name="game" value="Penalty"><span>⚽ بيلانتي</span></label>
     </div>
 
-    <label class="small">معرف حساب BetAndYou</label>
+    <label class="small">معرف حساب 1xBet</label>
     <input id="accId" class="input" placeholder="أدخل المعرف (مثال: 1821234567)" inputmode="numeric" maxlength="10" />
 
     <div class="note">10 أرقام (يبدأ بـ 182) • العملة: <strong>DZD</strong> • الرمز الترويجي: <strong style="color:var(--accent1)">RABAH786</strong></div>
-
-    <div class="hbar" aria-hidden="true"></div>
 
     <button id="startBtn" class="btn-start">ابدأ</button>
 
@@ -104,7 +101,7 @@
         <div>يُغلق الوصول خلال <span id="countdown" class="countdown">04:00</span></div>
       </div>
 
-      <div class="footer">خوارزمية أحمد الخاصة 2024</div>
+      <div class="footer">خوارزمية أحمد الخاصة 2026</div>
     </div>
   </div>
 
@@ -167,7 +164,7 @@
       return;
     }
     const game = document.querySelector('input[name="game"]:checked').nextElementSibling.textContent.trim();
-    showMessage(`✅ تم قبول حساب BetAndYou!\n\n🎮 اللعبة: ${game}\n🆔 المعرف: ${v}\n\n⚠️ لتفعيل الخوارزمية واستلام إشارات VIP، يجب عليك القيام بإيداع أول بحد أدنى 1000 د.ج باستخدام الرمز الترويجي RABAH786.`);
+    showMessage(`✅ تم قبول حساب 1xBet!\n\n🎮 اللعبة: ${game}\n🆔 المعرف: ${v}\n\n⚠️ لتفعيل الخوارزمية واستلام إشارات VIP، يجب عليك القيام بإيداع أول بحد أدنى 1000 د.ج باستخدام الرمز الترويجي RABAH786.`);
   });
 
   depositBtn.addEventListener('click', ()=>{
